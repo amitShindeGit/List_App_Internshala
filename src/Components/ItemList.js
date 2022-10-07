@@ -13,6 +13,7 @@ const ItemList = () => {
 
   useEffect(() => {
     //real time update
+    //This code is responsible for realtime updates on screen.
     const unSub = onSnapshot(colRef, (snapshot) => {
       let listArr = [];
       snapshot.forEach((e) => {
@@ -29,8 +30,8 @@ const ItemList = () => {
   return (
     <div>
         {testData.map((item, i) => {
-          {return !(i+1 === listItemLength) ?  <Item key={item.index} id={item.id} index={item.index} text={item.Text} lastItem={false} firstItem={i}  /> : 
-            <Item key={item.id} id={item.id} index={item.index} text={item.Text} lastItem={true}  />
+          {return !(i+1 === listItemLength) ?  <Item key={item.index} id={item.id} index={item.index} text={item.Text} isPinned={item.isPinned} lastItem={false} firstItem={i}  /> : 
+            <Item key={item.id} id={item.id} index={item.index} text={item.Text} isPinned={item.isPinned} lastItem={true} firstItem={i}  /> //have to pass firstItem as well
           }
         })}
     </div>

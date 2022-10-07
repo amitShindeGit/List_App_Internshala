@@ -39,4 +39,9 @@
 .deleteIcn{
     color: red;
     cursor: pointer;
+    margin: 0 1rem;
+}
+
+.btnClass{
+    display: flex;
 }

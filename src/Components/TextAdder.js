@@ -20,6 +20,7 @@ const TextAdder = () => {
 
   const onCLickHandler = async () => {
     try {
+      //Transaction operation for Adding new item to List
       await runTransaction(db, async (transaction) => {
         //Getting last document index
         const dbRefs = await collection(db, "List");
@@ -34,12 +35,14 @@ const TextAdder = () => {
         if(!lastIndex && lastIndex !== 0){
           await addDoc(collection(db, "List"), {
             Text: inputText,
-            index: 0 
+            index: 0 ,
+            isPinned : false
           });
         }else{
           await addDoc(collection(db, "List"), {
             Text: inputText,
-            index: Number(lastIndex) + 1 
+            index: Number(lastIndex) + 1,
+            isPinned : false
           });
         }
         
